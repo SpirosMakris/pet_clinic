@@ -19,3 +19,10 @@ then
 ```bash
 php artisan migrate
 ```
+
+## filament
+
+* Install fillament
+* create user
+
+Both are in the docs.
