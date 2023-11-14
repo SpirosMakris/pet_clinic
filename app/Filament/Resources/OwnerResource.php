@@ -26,16 +26,19 @@ class OwnerResource extends Resource
                 Forms\Components\Section::make([
                     Forms\Components\TextInput::make('name')
                         ->autofocus()
+                        ->live(onBlur: true)
                         ->required()
                         ->maxLength(255)
                         ->placeholder(__('Name')),
                     Forms\Components\TextInput::make('email')
+                        ->live(onBlur: true)
                         ->email()
                         ->required()
-                        ->unique(Owner::class, 'email')
+                        ->unique(Owner::class, 'email', ignoreRecord: true)
                         ->maxLength(255)
                         ->placeholder(__('Email')),
                     Forms\Components\TextInput::make('phone')
+                        ->live(onBlur: true)
                         ->tel()
                         ->required()
                         ->maxLength(255)
