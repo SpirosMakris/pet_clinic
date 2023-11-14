@@ -20,4 +20,12 @@ class Pet extends Model
     {
         return $this->hasMany(Appointment::class);
     }
+
+    public $fillable = [
+        'name',
+        'breed',
+        'weight',
+        'age',
+        'owner_id',
+    ];
 }

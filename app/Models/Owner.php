@@ -14,4 +14,10 @@ class Owner extends Model
     {
         return $this->hasMany(Pet::class);
     }
+
+    public $fillable = [
+        'name',
+        'email',
+        'phone',
+    ];
 }

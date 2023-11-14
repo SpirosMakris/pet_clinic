@@ -14,4 +14,10 @@ class Appointment extends Model
     {
         return $this->belongsTo(Pet::class);
     }
+
+    public $fillable = [
+        'pet_id',
+        'date',
+        'reason',
+    ];
 }
