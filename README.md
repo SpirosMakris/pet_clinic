@@ -49,3 +49,9 @@ Don't forget to add port in .env for APP_URL, if images don't load
 ## Filament tables
 
 * Remember to cast enums and dates in related models
+
+Publish configuration for filament (not usually needed)
+
+```bash
+php artisan vendor:publish --tag=filament-config
+```
