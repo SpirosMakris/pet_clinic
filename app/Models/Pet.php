@@ -22,10 +22,10 @@ class Pet extends Model
     }
 
     public $fillable = [
+        'avatar',
         'name',
-        'breed',
-        'weight',
-        'age',
+        'type',
+        'date_of_birth',
         'owner_id',
     ];
 }
