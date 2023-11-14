@@ -22,7 +22,13 @@ php artisan migrate
 
 ## filament
 
+### install
 * Install fillament
 * create user
 
 Both are in the docs.
+
+### creating resources
+```bash
+php artisan make:filament-resource Owner
+```
