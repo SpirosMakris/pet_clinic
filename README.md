@@ -20,6 +20,11 @@ then
 php artisan migrate
 ```
 
+## Debugbar
+```bash
+composer require barryvdh/laravel-debugbar --dev
+```
+
 ## filament
 
 ### install
