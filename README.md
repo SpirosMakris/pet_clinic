@@ -37,3 +37,15 @@ Both are in the docs.
 ```bash
 php artisan make:filament-resource Owner
 ```
+
+## File uploads storage
+
+```bash
+php artisan storage:link
+```
+
+Don't forget to add port in .env for APP_URL, if images don't load
+
+## Filament tables
+
+* Remember to cast enums and dates in related models

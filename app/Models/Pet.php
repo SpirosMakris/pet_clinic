@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PetType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,5 +28,10 @@ class Pet extends Model
         'type',
         'date_of_birth',
         'owner_id',
+    ];
+
+    protected $casts = [
+        'type' => PetType::class,
+        'date_of_birth' => 'date',
     ];
 }
