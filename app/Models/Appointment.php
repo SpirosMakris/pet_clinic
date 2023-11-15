@@ -22,6 +22,7 @@ class Appointment extends Model
         'start',
         'end',
         'description',
+        'status'
     ];
 
     protected $casts = [

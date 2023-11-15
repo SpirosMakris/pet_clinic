@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\AppointmentStatus;
 use App\Filament\Resources\AppointmentResource\Pages;
 use App\Filament\Resources\AppointmentResource\RelationManagers;
 use App\Models\Appointment;
@@ -70,6 +71,11 @@ class AppointmentResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->placeholder(__('Description')),
+                        Forms\Components\Select::make('status')
+                            ->native(false)
+                            ->options(AppointmentStatus::class)
+                            ->default(AppointmentStatus::CREATED)
+                            ->placeholder(__('Status')),
                     ]),
                 ]
             );
