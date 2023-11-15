@@ -120,6 +120,16 @@ class AppointmentResource extends Resource
                     ->visible(fn (Appointment $record) => $record->status === AppointmentStatus::CREATED)
                     ->color('success')
                     ->icon('heroicon-s-check'),
+                Tables\Actions\Action::make('Cancel')
+                    ->action(function (Appointment $record) {
+                        $record->update([
+                            'status' => AppointmentStatus::CANCELLED,
+                        ]);
+                    })
+                    ->visible(fn (Appointment $record) => $record->status !== AppointmentStatus::CANCELLED)
+                    ->color('danger')
+                    ->badge()
+                    ->icon('heroicon-o-x-mark'),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
