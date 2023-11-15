@@ -18,6 +18,8 @@ class Appointment extends Model
     public $fillable = [
         'pet_id',
         'date',
-        'reason',
+        'start',
+        'end',
+        'description',
     ];
 }
