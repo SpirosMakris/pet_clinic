@@ -75,6 +75,7 @@ class AppointmentResource extends Resource
                             ->native(false)
                             ->options(AppointmentStatus::class)
                             ->default(AppointmentStatus::CREATED)
+                            ->visibleOn(Pages\EditAppointment::class)
                             ->placeholder(__('Status')),
                     ]),
                 ]
@@ -103,12 +104,22 @@ class AppointmentResource extends Resource
                     ->label(__('To'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
+                    ->badge()
                     ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('Confirm')
+                    ->action(function (Appointment $record) {
+                        $record->update([
+                            'status' => AppointmentStatus::CONFIRMED,
+                        ]);
+                    })
+                    ->visible(fn (Appointment $record) => $record->status === AppointmentStatus::CREATED)
+                    ->color('success')
+                    ->icon('heroicon-s-check'),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
