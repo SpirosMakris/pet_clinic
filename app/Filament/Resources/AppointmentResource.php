@@ -96,6 +96,8 @@ class AppointmentResource extends Resource
                     ->time('g:i A')
                     ->label(__('To'))
                     ->sortable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->sortable(),
             ])
             ->filters([
                 //

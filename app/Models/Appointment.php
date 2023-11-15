@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AppointmentStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,5 +22,10 @@ class Appointment extends Model
         'start',
         'end',
         'description',
+    ];
+
+    protected $casts = [
+        'date' => 'date',
+        'status' => AppointmentStatus::class,
     ];
 }
