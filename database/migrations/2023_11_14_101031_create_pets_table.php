@@ -22,7 +22,7 @@ return new class extends Migration
 
             $table->foreignId('owner_id')
                 ->nullable()
-                ->constrained('owners');
+                ->constrained('users');
 
             $table->timestamps();
         });
