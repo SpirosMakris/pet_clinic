@@ -35,6 +35,7 @@ class PetResource extends Resource
                     Forms\Components\FileUpload::make('avatar')
                         ->image()
                         ->directory('pets/avatars')
+                        ->visibility('private')
                         ->imageEditor(),
                     Forms\Components\TextInput::make('name')
                         ->autofocus()
