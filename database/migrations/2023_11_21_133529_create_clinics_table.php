@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::table('appointments', function (Blueprint $table) {
-        //     $table->string('status')
-        //         ->default('created');
-        // });
+        Schema::create('clinics', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -22,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::table('appointments', function (Blueprint $table) {
-        //     $table->dropColumn('status');
-        // });
+        Schema::dropIfExists('clinics');
     }
 };

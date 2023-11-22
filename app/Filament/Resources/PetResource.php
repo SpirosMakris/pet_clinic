@@ -14,6 +14,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Enums\PetType;
+use Filament\Facades\Filament;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 use function Laravel\Prompts\search;
 
@@ -31,6 +35,7 @@ class PetResource extends Resource
                     Forms\Components\FileUpload::make('avatar')
                         ->image()
                         ->directory('pets/avatars')
+                        ->visibility('private')
                         ->imageEditor(),
                     Forms\Components\TextInput::make('name')
                         ->autofocus()
@@ -110,6 +115,19 @@ class PetResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->before(function (Pet $record) {
+                        // Delete the avatar file
+                        $avatar_file = 'public/' . $record->avatar;
+                        Log::info('Deleting avatar file: ' . $avatar_file);
+                        Storage::delete($avatar_file);
+                    })
+                    ->successNotification(
+                        Notification::make()
+                            ->success()
+                            ->title(__('Pet deleted'))
+                            ->body(__('Pet has been deleted.')),
+                    )
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
