@@ -14,4 +14,14 @@ class Clinic extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function pets(): BelongsToMany
+    {
+        return $this->belongsToMany(Pet::class);
+    }
+
+    public function appointments(): BelongsToMany
+    {
+        return $this->belongsToMany(Appointment::class);
+    }
 }
